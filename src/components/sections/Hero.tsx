@@ -1,10 +1,16 @@
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
+import Avatar from "@/components/ui/Avatar";
 
 export default function Hero() {
   return (
     <Section>
       <div className="flex flex-col items-center text-center">
+        <Avatar
+          variant="front"
+          className="mb-8 h-28 w-28"
+        />
+
         <p className="mb-4 text-sm uppercase tracking-[0.2em] text-(--text-secondary)">
           Portfolio développeur frontend
         </p>
