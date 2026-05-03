@@ -14,22 +14,13 @@ export default function Section({
   reverse = false,
 }: SectionProps) {
   return (
-    <section
-      className={`
-        py-20
-        md:py-28
-        ${className}
-      `}
-    >
+    <section className={`py-20 md:py-28 ${className}`}>
       <Container>
         <div
           className={
             split
               ? `
-                grid
-                items-center
-                gap-12
-                md:grid-cols-2
+                grid items-center gap-12 md:grid-cols-2
                 ${reverse ? "md:[&>*:first-child]:order-2" : ""}
               `
               : ""
