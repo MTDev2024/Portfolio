@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Section from "@/components/ui/Section";
 import { projects } from "@/data/projects";
 
@@ -13,11 +16,29 @@ export default function Projects() {
           Une sélection de projets réalisés durant ma formation et en autonomie.
         </p>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <motion.div
+          className="mt-10 grid gap-6 md:grid-cols-2"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: {
+                staggerChildren: 0.12,
+              },
+            },
+          }}
+        >
           {projects.map((project) => (
-            <article
+            <motion.article
               key={project.title}
               className="rounded-2xl border border-(--border) p-6 hover:bg-(--surface) transition-colors"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <h3 className="text-xl font-semibold">
                 {project.title}
@@ -37,9 +58,9 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
