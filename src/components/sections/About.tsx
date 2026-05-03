@@ -5,29 +5,34 @@ export default function About() {
   return (
     <Section split>
       {/* LEFT */}
-      <div>
-        <h2 className="text-3xl font-semibold md:text-4xl">
-          À propos de moi
-        </h2>
+      <article>
+        <header>
+          <h2 className="text-3xl font-semibold md:text-4xl">
+            À propos de moi
+          </h2>
+        </header>
 
         <p className="mt-6 text-(--text-secondary) text-lg leading-relaxed">
           Je suis développeur frontend spécialisé en React et Next.js.
-          Je conçois des interfaces modernes, performantes et accessibles,
+          Je conçois des interfaces web modernes, performantes et accessibles,
           avec une attention particulière à l’UX et à la qualité du code.
         </p>
 
         <p className="mt-4 text-(--text-secondary) text-lg leading-relaxed">
-          J’aime travailler sur des produits où le design system,
-          la performance et l’expérience utilisateur sont au centre.
+          J’intègre des bonnes pratiques de développement, d’accessibilité
+          et d’éco-conception dans chacun de mes projets afin de créer
+          des expériences utilisateur durables et efficaces.
         </p>
-      </div>
+
+        <p className="mt-4 text-(--text-secondary) text-lg leading-relaxed">
+          Mon objectif est de transformer des besoins métiers en interfaces
+          claires, rapides et maintenables avec un code propre et scalable.
+        </p>
+      </article>
 
       {/* RIGHT */}
       <div className="flex justify-center md:justify-end">
-        <Avatar
-          variant="three-quarter"
-          className="h-64 w-64"
-        />
+        <Avatar variant="three-quarter" className="h-64 w-64" />
       </div>
     </Section>
   );
