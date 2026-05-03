@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
 import Avatar from "@/components/ui/Avatar";
@@ -5,25 +8,53 @@ import Avatar from "@/components/ui/Avatar";
 export default function Hero() {
   return (
     <Section>
-      <div className="flex flex-col items-center text-center">
-        <Avatar
-          variant="front"
-          className="mb-8 h-28 w-28"
-        />
+      <motion.div
+        className="flex flex-col items-center text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          <Avatar variant="front" className="mb-8 h-28 w-28" />
+        </motion.div>
 
-        <p className="mb-4 text-sm uppercase tracking-[0.2em] text-(--text-secondary)">
+        <motion.p
+          className="mb-4 text-sm uppercase tracking-[0.2em] text-(--text-secondary)"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
           Portfolio développeur frontend
-        </p>
+        </motion.p>
 
-        <h1 className="max-w-3xl text-5xl font-semibold tracking-tight md:text-7xl">
+        <motion.h1
+          className="max-w-3xl text-5xl font-semibold tracking-tight md:text-7xl"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
           Développeur React & Next.js
-        </h1>
+        </motion.h1>
 
-        <p className="mt-6 max-w-2xl text-lg text-(--text-secondary)">
+        <motion.p
+          className="mt-6 max-w-2xl text-lg text-(--text-secondary)"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
           Je conçois des interfaces modernes, accessibles et performantes avec une approche centrée UX.
-        </p>
+        </motion.p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <motion.div
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
           <Button href="#projects">
             Voir mes projets
           </Button>
@@ -31,8 +62,8 @@ export default function Hero() {
           <Button href="#contact" variant="secondary">
             Me contacter
           </Button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </Section>
   );
 }
