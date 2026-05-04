@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "@/components/system/ThemeToggle";
 
 export default function Navbar() {
   return (
@@ -44,7 +45,9 @@ export default function Navbar() {
             </Link>
           </li>
         </ul>
+        <ThemeToggle />
       </div>
+      
     </nav>
   );
 }
