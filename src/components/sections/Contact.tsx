@@ -8,32 +8,71 @@ export default function Contact() {
           Contact
         </h2>
 
-        <p className="mt-4 text-(--text-secondary) text-lg max-w-2xl mx-auto">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-(--text-secondary)">
           Vous avez un projet ou une opportunité ?
-          Je suis disponible pour des missions freelance ou collaborations.
+          Je suis disponible pour des missions freelance
+          ou collaborations.
         </p>
 
         {/* CTA email */}
         <div className="mt-8">
           <a
-            href="mailto:tonemail@example.com"
-            className="text-lg font-medium underline underline-offset-4 hover:text-black transition-colors"
+            href="mailto:mt.dev.2023@gmail.com"
+            className="
+              text-lg
+              font-medium
+              text-(--text-secondary)
+              underline
+              underline-offset-4
+              transition-colors
+              hover:text-(--foreground)
+            "
           >
-            tonemail@example.com
+            Ecrivez-moi
           </a>
         </div>
 
         {/* Liens sociaux */}
         <div className="mt-8 flex justify-center gap-6 text-(--text-secondary)">
-          <a href="#" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.linkedin.com/in/michael-takbou"
+            target="_blank"
+            rel="noreferrer"
+            className="
+              underline
+              underline-offset-4
+              transition-colors
+              hover:text-(--foreground)
+            "
+          >
             LinkedIn
           </a>
 
-          <a href="#" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/MTDev2024"
+            target="_blank"
+            rel="noreferrer"
+            className="
+              underline
+              underline-offset-4
+              transition-colors
+              hover:text-(--foreground)
+            "
+          >
             GitHub
           </a>
 
-          <a href="#" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.malt.fr/profile/michaeltakbou"
+            target="_blank"
+            rel="noreferrer"
+            className="
+              underline
+              underline-offset-4
+              transition-colors
+              hover:text-(--foreground)
+            "
+          >
             Malt
           </a>
         </div>

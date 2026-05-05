@@ -58,6 +58,45 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
+            <div className="mt-4 flex gap-4">
+  {project.liveUrl && (
+    <a
+      href={project.liveUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="
+  text-sm
+  font-medium
+  text-(--text-secondary)
+  underline
+  underline-offset-4
+  transition-colors
+  hover:text-(--foreground)
+"
+    >
+      Live
+    </a>
+  )}
+
+  {project.githubUrl && (
+    <a
+      href={project.githubUrl}
+      target="_blank"
+      rel="noreferrer"
+   className="
+  text-sm
+  font-medium
+  text-(--text-secondary)
+  underline
+  underline-offset-4
+  transition-colors
+  hover:text-(--foreground)
+"
+    >
+      GitHub
+    </a>
+  )}
+</div>
             </motion.article>
           ))}
         </motion.div>

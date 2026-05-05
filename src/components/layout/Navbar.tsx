@@ -13,7 +13,7 @@ export default function Navbar() {
           href="#hero"
           className="text-sm font-semibold tracking-wide"
         >
-          MTDev
+          Michael Takbou
         </Link>
 
         {/* Navigation */}
