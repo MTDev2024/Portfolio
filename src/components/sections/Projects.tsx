@@ -126,7 +126,7 @@ export default function Projects() {
           top-28 = hauteur du Navbar (pt-20) + un peu de marge
         */}
         <div className="hidden md:sticky md:top-28 md:block">
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-(--border) bg-(--surface)">
+          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-(--border) bg-(--surface)">
             {/*
               AnimatePresence mode="wait" : attend que l'ancienne image
               finisse de sortir avant d'afficher la nouvelle
@@ -146,10 +146,9 @@ export default function Projects() {
                     src={activeProject.imageUrl}
                     alt={`Aperçu du projet ${activeProject.title}`}
                     fill
-                    className="object-cover object-top-left"
+                    className="object-contain"
                   />
                 ) : (
-                  // Placeholder tant que le screenshot n'est pas disponible
                   <div className="flex h-full items-center justify-center">
                     <span className="text-sm text-(--text-secondary)">
                       {activeProject.title}
