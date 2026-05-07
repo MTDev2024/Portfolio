@@ -5,7 +5,7 @@ import ThemeToggle from "@/components/system/ThemeToggle"
 import { useScrollSpy } from "@/hooks/useScrollSpy"
 
 export default function Navbar() {
-  const activeSection = useScrollSpy(["hero", "about", "projects", "contact"])
+  const activeSection = useScrollSpy(["hero", "about", "skills", "projects", "contact"])
 
   const linkClass = (id: string) =>
     `transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
@@ -28,6 +28,12 @@ export default function Navbar() {
           <li>
             <Link href="#about" className={linkClass("about")}>
               À propos
+            </Link>
+          </li>
+
+          <li>
+            <Link href="#skills" className={linkClass("skills")}>
+              Compétences
             </Link>
           </li>
 
