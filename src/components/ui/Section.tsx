@@ -1,6 +1,7 @@
 import Container from "./Container";
 
 type SectionProps = {
+  id?: string;
   children: React.ReactNode;
   className?: string;
   split?: boolean;
@@ -8,13 +9,17 @@ type SectionProps = {
 };
 
 export default function Section({
+  id,
   children,
   className = "",
   split = false,
   reverse = false,
 }: SectionProps) {
   return (
-    <section className={`py-20 md:py-28 ${className}`}>
+    <section
+      id={id}
+      className={`py-20 md:py-28 scroll-mt-24 ${className}`}
+    >
       <Container>
         <div
           className={

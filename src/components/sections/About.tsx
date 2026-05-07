@@ -1,30 +1,26 @@
-import Section from "@/components/ui/Section";
-import Avatar from "@/components/ui/Avatar";
+import Section from "@/components/ui/Section"
+import Avatar from "@/components/ui/Avatar"
 
 export default function About() {
   return (
-    <Section split>
+    <Section id="about" split>
       {/* LEFT */}
       <article>
-        <header>
-          <h2 className="text-3xl font-semibold md:text-4xl">
-            À propos de moi
-          </h2>
-        </header>
+        <h2 className="text-3xl font-semibold md:text-4xl">À propos de moi</h2>
 
-        <p className="mt-6 text-(--text-secondary) text-lg leading-relaxed">
-          Je suis développeur frontend spécialisé en React et Next.js.
-          Je conçois des interfaces web modernes, performantes et accessibles,
-          avec une attention particulière à l’UX et à la qualité du code.
+        <p className="mt-6 text-lg leading-relaxed text-(--text-secondary)">
+          Je suis développeur frontend spécialisé en React et Next.js. Je
+          conçois des interfaces web modernes, performantes et accessibles, avec
+          une attention particulière à l’UX et à la qualité du code.
         </p>
 
-        <p className="mt-4 text-(--text-secondary) text-lg leading-relaxed">
-          J’intègre des bonnes pratiques de développement, d’accessibilité
-          et d’éco-conception dans chacun de mes projets afin de créer
-          des expériences utilisateur durables et efficaces.
+        <p className="mt-4 text-lg leading-relaxed text-(--text-secondary)">
+          J’intègre des bonnes pratiques de développement, d’accessibilité et
+          d’éco-conception dans chacun de mes projets afin de créer des
+          expériences utilisateur durables et efficaces.
         </p>
 
-        <p className="mt-4 text-(--text-secondary) text-lg leading-relaxed">
+        <p className="mt-4 text-lg leading-relaxed text-(--text-secondary)">
           Mon objectif est de transformer des besoins métiers en interfaces
           claires, rapides et maintenables avec un code propre et scalable.
         </p>
@@ -35,5 +31,5 @@ export default function About() {
         <Avatar variant="three-quarter" className="h-64 w-64" />
       </div>
     </Section>
-  );
+  )
 }

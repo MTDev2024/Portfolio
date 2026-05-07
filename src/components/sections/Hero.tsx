@@ -7,7 +7,7 @@ import Avatar from "@/components/ui/Avatar";
 
 export default function Hero() {
   return (
-    <Section>
+    <Section id="hero">
       <motion.div
         className="flex flex-col items-center text-center"
         initial={{ opacity: 0, y: 20 }}
