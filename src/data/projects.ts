@@ -10,7 +10,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "Portfolio développeur",
+    id: "portfolio-developpeur",
     title: "Portfolio développeur",
     description:
       "Portfolio moderne développé avec Next.js, Tailwind et Framer Motion.",
@@ -20,7 +20,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: "Museo",
+    id: "museo",
     title: "Museo",
     description:
       "Galerie d'art interactive utilisant l'API de l'Art Institute of Chicago.",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: "Application GameOn",
+    id: "gameon",
     title: "Application GameOn",
     description:
       "Formulaire interactif avec validation et logique métier en JavaScript.",
@@ -44,7 +44,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: "Les Petits Plats",
+    id: "les-petits-plats",
     title: "Les Petits Plats",
     description:
       "Moteur de recherche performant avec algorithmes optimisés en JS.",
