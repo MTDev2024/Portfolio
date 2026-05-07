@@ -26,8 +26,7 @@ export default function Projects() {
         Sur mobile : empilé verticalement (grid-cols-1)
       */}
       <div className="mt-12 grid grid-cols-1 items-start gap-8 md:grid-cols-[1fr_1.2fr] md:gap-16">
-
-        {/* ── GAUCHE : liste des projets ── */}
+        {/* - GAUCHE : liste des projets - */}
         <ul className="flex flex-col">
           {projects.map((project, index) => {
             const isActive = project.id === activeId
@@ -42,12 +41,12 @@ export default function Projects() {
               >
                 <div className="flex items-start gap-4 px-2">
                   {/* Numéro */}
-                  <span className="mt-1 shrink-0 text-xs tabular-nums text-(--text-secondary)">
+                  <span className="mt-1 shrink-0 text-xs text-(--text-secondary) tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
                   <div className="flex-1">
-                    {/* Titre — foreground si actif, secondaire sinon */}
+                    {/* Titre - foreground si actif, secondaire sinon */}
                     <h3
                       className={`text-lg font-semibold transition-colors ${
                         isActive
@@ -121,7 +120,7 @@ export default function Projects() {
           })}
         </ul>
 
-        {/* ── DROITE : image du projet actif ── */}
+        {/* - DROITE : image du projet actif - */}
         {/*
           sticky top-28 : l'image reste visible pendant qu'on scroll la liste
           top-28 = hauteur du Navbar (pt-20) + un peu de marge
@@ -147,7 +146,7 @@ export default function Projects() {
                     src={activeProject.imageUrl}
                     alt={`Aperçu du projet ${activeProject.title}`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top-left"
                   />
                 ) : (
                   // Placeholder tant que le screenshot n'est pas disponible
@@ -171,7 +170,6 @@ export default function Projects() {
             {activeProject.title}
           </motion.p>
         </div>
-
       </div>
     </Section>
   )

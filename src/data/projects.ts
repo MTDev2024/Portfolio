@@ -29,7 +29,7 @@ export const projects: Project[] = [
     description:
       "Galerie d'art interactive utilisant l'API de l'Art Institute of Chicago.",
     tech: ["Next.js", "React", "Tailwind", "Framer Motion"],
-    imageUrl: "/images/projects/museo.jpg",
+    imageUrl: "/images/projects/museo.png",
 
     liveUrl: "https://museo-app-zeta.vercel.app/",
     githubUrl: "https://github.com/MTDev2024/museo",
