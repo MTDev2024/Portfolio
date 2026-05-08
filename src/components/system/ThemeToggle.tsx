@@ -1,17 +1,25 @@
-"use client";
+"use client"
 
-import { useTheme } from "@/hooks/useTheme";
+import { useState, useEffect } from "react"
+import { useTheme } from "@/hooks/useTheme"
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme()
+
+  // On attend le montage client avant de rendre le bouton
+  // pour eviter la hydration mismatch (serveur = "light", client = valeur localStorage)
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return <div className="w-14" />
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label="Changer le thème"
-      className="text-sm text-(--text-secondary) hover:text-black transition-colors"
+      aria-label="Changer le theme"
+      className="text-sm text-(--text-secondary) transition-colors hover:text-(--foreground)"
     >
       {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
     </button>
-  );
+  )
 }

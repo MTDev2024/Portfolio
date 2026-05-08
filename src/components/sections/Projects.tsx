@@ -146,6 +146,7 @@ export default function Projects() {
                     src={activeProject.imageUrl}
                     alt={`Aperçu du projet ${activeProject.title}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-contain"
                   />
                 ) : (
