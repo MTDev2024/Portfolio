@@ -13,10 +13,10 @@ export const site = {
 
   legal: {
     status: "Auto-entrepreneur",
-    siret: "XXX XXX XXX XXXXX",     // à remplir
-    address: "XXX rue XXXX",         // à remplir
-    zipCode: "XXXXX",                // à remplir
-    city: "XXXXX",                   // à remplir
+    siret: "XXX XXX XXX XXXXX", // à remplir
+    address: "XXX rue XXXX", // à remplir
+    zipCode: "XXXXX", // à remplir
+    city: "XXXXX", // à remplir
     director: "Michael Takbou",
     host: "Vercel Inc.",
     hostUrl: "https://vercel.com",
