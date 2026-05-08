@@ -24,7 +24,7 @@ export default function Navbar() {
         </Link>
 
         {/* Navigation */}
-        <ul className="flex items-center gap-6 text-sm">
+        <ul className="flex items-center gap-6">
           <li>
             <Link href="#about" className={linkClass("about")}>
               À propos

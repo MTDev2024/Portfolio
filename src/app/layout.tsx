@@ -1,5 +1,6 @@
 import "./globals.css"
 import Navbar from "@/components/layout/Navbar"
+import Footer from "@/components/layout/Footer"
 import { Inter } from "next/font/google"
 import { site } from "@/config/site"
 import type { Metadata } from "next"
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main className="pt-20">{children}</main>
+        <Footer />
       </body>
     </html>
   )
