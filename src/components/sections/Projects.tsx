@@ -7,7 +7,7 @@ import Section from "@/components/ui/Section"
 import { projects } from "@/data/projects"
 
 export default function Projects() {
-  // Projet actif — initialisé sur le premier par défaut
+  // Projet actif - initialisé sur le premier par défaut
   const [activeId, setActiveId] = useState(projects[0].id)
   const activeProject = projects.find((p) => p.id === activeId)!
 
@@ -16,7 +16,7 @@ export default function Projects() {
       <h2 className="text-3xl font-semibold md:text-4xl">Projets</h2>
 
       <p className="mt-4 text-lg text-(--text-secondary)">
-        Une sélection de projets réalisés durant ma formation et en autonomie.
+        Quelques un des projets que j&aposai réalisés.
       </p>
 
       {/*
@@ -58,7 +58,7 @@ export default function Projects() {
                     </h3>
 
                     {/*
-                      Détails animés — visibles uniquement sur le projet actif
+                      Détails animés - visibles uniquement sur le projet actif
                       AnimatePresence gère l'entrée/sortie proprement
                     */}
                     <AnimatePresence initial={false}>
