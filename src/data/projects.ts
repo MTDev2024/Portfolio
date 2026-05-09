@@ -18,9 +18,9 @@ export const projects: Project[] = [
     description:
       "Portfolio moderne développé avec Next.js, Tailwind et Framer Motion.",
     tech: ["Next.js", "React", "Tailwind"],
-    imageUrl: "/images/projects/portfolio-developpeur.jpg",
-
-    githubUrl: "#",
+    imageUrl: "/images/projects/portfolio.png",
+    liveUrl: "https://michael-takbou.vercel.app/",
+    githubUrl: "https://github.com/MTDev2024/Portfolio",
   },
 
   {
@@ -28,7 +28,14 @@ export const projects: Project[] = [
     title: "Museo",
     description:
       "Galerie d'art interactive utilisant l'API de l'Art Institute of Chicago.",
-    tech: ["Next.js", "React", "Tailwind", "Framer Motion"],
+    tech: [
+      "React",
+      "Vite",
+      "Tailwind",
+      "Framer Motion",
+      "React Three Fiber",
+      "Chicago Art Institute API",
+    ],
     imageUrl: "/images/projects/museo.png",
 
     liveUrl: "https://museo-app-zeta.vercel.app/",
@@ -36,24 +43,41 @@ export const projects: Project[] = [
   },
 
   {
-    id: "gameon",
-    title: "Application GameOn",
-    description:
-      "Formulaire interactif avec validation et logique métier en JavaScript.",
-    tech: ["JavaScript", "HTML", "CSS"],
-    imageUrl: "/images/projects/gameon.jpg",
+    id: "artisan",
+    title: "Dupont Plomberie",
+    description: "Site vitrine pour un artisan plombier",
+    tech: ["React", "Tailwind", "Framer Motion", "Leaflet", "Resend"],
+    imageUrl: "/images/projects/artisan.png",
 
-    githubUrl: "#",
+    liveUrl: "https://starter-artisan.vercel.app/",
+    githubUrl: "https://github.com/MTDev2024/starter-artisan",
   },
-
   {
-    id: "les-petits-plats",
-    title: "Les Petits Plats",
-    description:
-      "Moteur de recherche performant avec algorithmes optimisés en JS.",
-    tech: ["JavaScript", "Algorithmes"],
-    imageUrl: "/images/projects/les-petits-plats.jpg",
+    id: "renovation",
+    title: "Cap Renov",
+    description: "Site vitrine pour une entreprise de rénovation",
+    tech: ["React", "Tailwind", "Framer Motion", "Leaflet", "Resend"],
+    imageUrl: "/images/projects/renovation.png",
 
-    githubUrl: "#",
+    liveUrl: "https://starter-renovation.vercel.app/",
+    githubUrl: "https://github.com/MTDev2024/starter-renovation",
+  },
+  {
+    id: "slider",
+    title: "animated_slider",
+    description: "Slider animé",
+    tech: ["HTML", "CSS", "JavaScript"],
+    imageUrl: "/images/projects/slider.jpg",
+    liveUrl: "https://starter-beaute.vercel.app/",
+    githubUrl: "https://github.com/MTDev2024/starter-beaute",
+  },
+  {
+    id: "beaute",
+    title: "Iris & Co",
+    description: "Site vitrine pour un institut de beauté",
+    tech: ["React", "Tailwind", "Framer Motion", "Leaflet", "Resend"],
+    imageUrl: "/images/projects/beaute.png",
+    liveUrl: "https://starter-beaute.vercel.app/",
+    githubUrl: "https://github.com/MTDev2024/starter-beaute",
   },
 ]

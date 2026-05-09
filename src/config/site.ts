@@ -6,7 +6,7 @@ const siteUrl =
 export const site = {
   url: siteUrl,
   name: "Michael Takbou",
-  title: "Portfolio — Développeur Frontend React & Next.js",
+  title: "Portfolio - Développeur Frontend React & Next.js",
   description:
     "Portfolio de Michael Takbou, développeur frontend spécialisé en React et Next.js. Interfaces modernes, accessibles et performantes.",
   email: "mt.dev.2023@gmail.com",
