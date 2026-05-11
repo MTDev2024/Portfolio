@@ -19,7 +19,7 @@ export default function Contact() {
           <div className="mt-8">
             <a
               href="mailto:mt.dev.2023@gmail.com"
-              className="text-sm font-medium text-(--text-secondary) underline underline-offset-4 transition-colors hover:text-(--foreground)"
+              className="text-sm font-medium text-(--accent) underline underline-offset-4 transition-colors hover:opacity-80"
             >
               Écrivez-moi
             </a>
@@ -56,7 +56,7 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
-              className="text-(--text-secondary) transition-colors hover:text-(--foreground)"
+              className="text-(--text-secondary) transition-colors hover:text-(--accent)"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

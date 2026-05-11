@@ -7,11 +7,14 @@ export default function About() {
       {/* LEFT */}
       <article>
         <h2 className="text-3xl font-semibold md:text-4xl">À propos de moi</h2>
+        {/* Ligne décorative accent — ancre visuelle sous le titre */}
+        <div className="mt-3 h-0.5 w-10 bg-(--accent)" />
 
         <p className="mt-6 text-lg leading-relaxed text-(--text-secondary)">
-          Je suis développeur frontend spécialisé en React et Next.js. Je
-          conçois des interfaces web modernes, performantes et accessibles, avec
-          une attention particulière à l’UX et à la qualité du code.
+          Je suis développeur frontend spécialisé en{" "}
+          <span className="font-medium text-(--accent)">React et Next.js</span>.
+          Je conçois des interfaces web modernes, performantes et accessibles,
+          avec une attention particulière à l’UX et à la qualité du code.
         </p>
 
         <p className="mt-4 text-lg leading-relaxed text-(--text-secondary)">

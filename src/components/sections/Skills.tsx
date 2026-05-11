@@ -52,7 +52,7 @@ export default function Skills() {
           >
             {/* Numéro + titre de catégorie */}
             <div className="flex items-baseline gap-3 sm:w-40 sm:shrink-0">
-              <span className="text-xs tabular-nums text-(--text-secondary)">
+              <span className="text-xs tabular-nums text-(--accent) opacity-70">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="text-sm font-semibold">{category.title}</span>
@@ -73,7 +73,7 @@ export default function Skills() {
                   className={[
                     "cursor-default rounded-full border border-(--border)",
                     "bg-(--background) px-3 py-1 text-sm text-(--text-secondary)",
-                    "transition-colors hover:border-(--foreground) hover:text-(--foreground)",
+                    "transition-colors hover:border-(--accent) hover:text-(--accent)",
                     // Effet glossy : reflet lumineux en haut du badge au hover
                     // box-shadow inset simule une surface en verre sans affecter le layout
                     "hover:[box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.18),inset_0_0_12px_0_rgba(255,255,255,0.04)]",
