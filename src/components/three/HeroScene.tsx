@@ -23,11 +23,15 @@ function useIsDark() {
 
 // Respecte le réglage système "réduire les animations" (WCAG 2.1 SC 2.3.3)
 function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false)
+  // Initialisation lazy : lit la valeur immédiatement sans setState synchrone dans useEffect
+  const [reduced, setReduced] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  )
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    setReduced(mq.matches)
     const handler = (e: MediaQueryListEvent) => setReduced(e.matches)
     mq.addEventListener("change", handler)
     return () => mq.removeEventListener("change", handler)
@@ -40,8 +44,8 @@ function usePrefersReducedMotion() {
 function WaveGrid({ color, reduced }: { color: string; reduced: boolean }) {
   const mesh = useRef<THREE.InstancedMesh>(null)
 
-  const COLS = 30
-  const ROWS = 18
+  const COLS = 36
+  const ROWS = 20
   const COUNT = COLS * ROWS
   const SPACING = 0.45
 
@@ -60,7 +64,7 @@ function WaveGrid({ color, reduced }: { color: string; reduced: boolean }) {
       dummy.position.set(
         (col - COLS / 2) * SPACING,
         (row - ROWS / 2) * SPACING,
-        0,
+        0
       )
       dummy.updateMatrix()
       mesh.current.setMatrixAt(i, dummy.matrix)
@@ -95,9 +99,7 @@ function WaveGrid({ color, reduced }: { color: string; reduced: boolean }) {
       const mouseDist = Math.sqrt(dx * dx + dy * dy)
       // exp(-dist) crée une atténuation gaussienne : effet fort près de la souris, nul loin
       const mouseWave =
-        Math.sin(mouseDist * 1.2 - t * 2.5) *
-        0.18 *
-        Math.exp(-mouseDist * 0.35)
+        Math.sin(mouseDist * 1.2 - t * 2.5) * 0.18 * Math.exp(-mouseDist * 0.35)
 
       dummy.position.set(x, y, wave + mouseWave)
       dummy.updateMatrix()
@@ -109,7 +111,7 @@ function WaveGrid({ color, reduced }: { color: string; reduced: boolean }) {
 
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, COUNT]}>
-      {/* Rayon 0.025 — plus fin, moins encombrant */}
+      {/* Rayon 0.025 - plus fin, moins encombrant */}
       <sphereGeometry args={[0.025, 6, 6]} />
       <meshBasicMaterial color={color} />
     </instancedMesh>
@@ -118,26 +120,23 @@ function WaveGrid({ color, reduced }: { color: string; reduced: boolean }) {
 
 // Icosaèdre wireframe flottant
 function FloatingWireframe({ color }: { color: string }) {
-  // useThree donne accès aux dimensions du viewport EN UNITÉS 3D
-  // (pas en pixels — c'est la largeur visible dans la scène à z=0)
   const { viewport } = useThree()
 
-  // Sur mobile portrait le viewport 3D est trop étroit (~2.7 unités)
-  // Le wireframe serait hors champ ou masquerait le contenu — on ne l'affiche pas
-  if (viewport.width < 6) return null
+  const isMobile = viewport.width < 6
 
-  // Position dynamique : 30% de la largeur viewport vers la droite
-  const x = viewport.width * 0.3
+  // Mobile : petit, centré en arrière-plan (z plus reculé)
+  // Desktop : plus grand, décalé à droite
+  const position: [number, number, number] = isMobile
+    ? [0, 0.5, -1.5]
+    : [viewport.width * 0.3, 0.2, -0.5]
+
+  const radius = isMobile ? 0.5 : 0.9
 
   return (
-    <Float speed={1.4} rotationIntensity={0.5} floatIntensity={0.4}>
-      <mesh position={[x, 0.2, -0.5]}>
-        {/* detail=1 → subdivise une fois → ~80 triangles */}
-        <icosahedronGeometry args={[0.9, 1]} />
-        {/*
-          depthWrite={false} → le wireframe n'écrit pas dans le depth buffer
-          → les dots derrière ses faces restent visibles
-        */}
+    // Augmentation des intensités pour plus de mouvement
+    <Float speed={2.5} rotationIntensity={1.2} floatIntensity={0.8}>
+      <mesh position={position}>
+        <icosahedronGeometry args={[radius, 1]} />
         <meshBasicMaterial color={color} wireframe depthWrite={false} />
       </mesh>
     </Float>
@@ -154,10 +153,9 @@ export default function HeroScene() {
   return (
     <Canvas
       camera={{ position: [0, 0, 5], fov: 60 }}
-      // alpha: true → fond transparent, la couleur de page passe au travers
       gl={{ antialias: true, alpha: true }}
-      // Limite le device pixel ratio à 1.5 pour économiser le GPU sur les écrans retina
       dpr={[1, 1.5]}
+      style={{ width: "100%", height: "100%" }}
     >
       <WaveGrid color={dotColor} reduced={reduced} />
       <FloatingWireframe color={wireColor} />
