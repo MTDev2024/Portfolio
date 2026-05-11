@@ -198,46 +198,56 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-            onClick={() => setZoomedImageUrl(null)}
+            className="fixed inset-0 z-50"
             role="dialog"
             aria-modal="true"
             aria-label="Aperçu agrandi du projet"
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="relative h-[85vh] w-full max-w-5xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={zoomedImageUrl}
-                alt="Aperçu agrandi"
-                fill
-                className="object-contain"
-                sizes="90vw"
-              />
-            </motion.div>
-
+            {/* Backdrop — bouton plein écran pour fermer au tap n'importe où */}
             <button
+              className="absolute inset-0 h-full w-full bg-black/80"
               onClick={() => setZoomedImageUrl(null)}
               aria-label="Fermer l'aperçu"
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
+            />
+
+            {/* Image centrée par-dessus le backdrop */}
+            <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-5 p-4">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="pointer-events-auto relative h-[80vh] w-full max-w-5xl"
               >
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
+                <Image
+                  src={zoomedImageUrl}
+                  alt="Aperçu agrandi"
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                />
+              </motion.div>
+
+              {/* Bouton fermeture en bas centré — accessible au pouce */}
+              <button
+                onClick={() => setZoomedImageUrl(null)}
+                aria-label="Fermer l'aperçu"
+                className="pointer-events-auto flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-sm text-white transition-colors hover:bg-white/20"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+                Fermer
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
