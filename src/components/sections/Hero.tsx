@@ -1,13 +1,24 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
 import Avatar from "@/components/ui/Avatar";
 
+// ssr: false — WebGL n'existe pas côté serveur Node.js
+const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
+  ssr: false,
+});
+
 export default function Hero() {
   return (
-    <Section id="hero">
+    <Section id="hero" className="relative flex min-h-[100svh] items-center overflow-hidden">
+      {/* Canvas 3D en arrière-plan — pointer-events-none pour ne pas bloquer les clics */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <HeroScene />
+      </div>
+
       <motion.div
         className="flex flex-col items-center text-center"
         initial={{ opacity: 0, y: 20 }}
