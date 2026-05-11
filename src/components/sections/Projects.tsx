@@ -35,6 +35,7 @@ export default function Projects() {
               <li
                 key={project.id}
                 onMouseEnter={() => setActiveId(project.id)}
+                onClick={() => setActiveId(project.id)}
                 className={`group cursor-default border-t border-(--border) py-6 transition-colors last:border-b ${
                   isActive ? "" : "hover:bg-(--surface)"
                 }`}
@@ -110,6 +111,19 @@ export default function Projects() {
                               </a>
                             )}
                           </div>
+
+                          {/* Screenshot mobile — masqué sur desktop (colonne droite) */}
+                          {project.imageUrl && (
+                            <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-xl border border-(--border) bg-(--surface) md:hidden">
+                              <Image
+                                src={project.imageUrl}
+                                alt={`Aperçu du projet ${project.title}`}
+                                fill
+                                sizes="100vw"
+                                className="object-contain"
+                              />
+                            </div>
+                          )}
                         </motion.div>
                       )}
                     </AnimatePresence>
