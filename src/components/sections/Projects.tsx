@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import Section from "@/components/ui/Section"
@@ -11,17 +11,65 @@ export default function Projects() {
   const activeProject = projects.find((p) => p.id === activeId)!
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null)
 
-  // Fermeture modale via Échap + blocage scroll body
+  // Référence sur le conteneur de la modale pour y chercher les éléments focusables
+  const dialogRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (!zoomedImageUrl) return
+
+    // 1. Bloque le scroll de la page derrière la modale
     document.body.style.overflow = "hidden"
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setZoomedImageUrl(null)
+
+    // 2. Mémorise l'élément qui avait le focus AVANT l'ouverture
+    //    pour pouvoir le restaurer à la fermeture
+    const previouslyFocused = document.activeElement as HTMLElement
+
+    // 3. Déplace le focus dans la modale après l'animation d'entrée
+    //    requestAnimationFrame attend que le DOM soit peint avant de focus
+    const raf = requestAnimationFrame(() => {
+      const buttons = dialogRef.current?.querySelectorAll<HTMLElement>("button")
+      // On focus le dernier bouton = "Fermer", le plus visible
+      buttons?.[buttons.length - 1]?.focus()
+    })
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Fermeture avec Échap
+      if (e.key === "Escape") {
+        setZoomedImageUrl(null)
+        return
+      }
+
+      // Focus trap : empêche Tab de sortir de la modale
+      if (e.key !== "Tab") return
+
+      // Collecte tous les éléments focusables dans la modale
+      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [href], input, [tabindex]:not([tabindex="-1"])',
+      )
+      if (!focusable || focusable.length === 0) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      // Shift+Tab depuis le 1er → saute au dernier
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      // Tab depuis le dernier → revient au 1er
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
-    window.addEventListener("keydown", handleKey)
+
+    window.addEventListener("keydown", handleKeyDown)
+
     return () => {
       document.body.style.overflow = ""
-      window.removeEventListener("keydown", handleKey)
+      cancelAnimationFrame(raf)
+      window.removeEventListener("keydown", handleKeyDown)
+      // 4. Restaure le focus sur l'élément d'origine à la fermeture
+      previouslyFocused?.focus()
     }
   }, [zoomedImageUrl])
 
@@ -49,7 +97,7 @@ export default function Projects() {
                 }`}
               >
                 <div className="flex items-start gap-4 px-2">
-                  <span className="mt-1 shrink-0 text-xs text-(--text-secondary) tabular-nums">
+                  <span className="mt-1 shrink-0 text-xs text-(--accent) tabular-nums opacity-70">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
@@ -198,6 +246,7 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
+            ref={dialogRef}
             className="fixed inset-0 z-50"
             role="dialog"
             aria-modal="true"

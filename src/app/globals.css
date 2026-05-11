@@ -12,6 +12,10 @@
 
   --surface: #f8f8f8;
   --border: #e5e5e5;
+
+  /* Violet-600 — contraste 5.5:1 sur fond blanc ✓ WCAG AA */
+  --accent: #7c3aed;
+  --accent-subtle: #ede9fe;
 }
 
 .dark {
@@ -22,6 +26,10 @@
 
   --surface: #2e2e2e;
   --border: #3a3a3a;
+
+  /* Violet-400 — contraste 5.9:1 sur fond sombre ✓ WCAG AA */
+  --accent: #a78bfa;
+  --accent-subtle: #2e1f4a;
 }
 
 /* ========================================
@@ -76,6 +84,6 @@ p {
 ======================================== */
 
 *:focus-visible {
-  outline: 2px solid var(--foreground);
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }

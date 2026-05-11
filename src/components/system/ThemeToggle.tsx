@@ -1,22 +1,27 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useSyncExternalStore } from "react"
 import { useTheme } from "@/hooks/useTheme"
+
+// useSyncExternalStore retourne false côté serveur (getServerSnapshot)
+// et true côté client (getSnapshot) — sans setState ni useEffect
+const useIsMounted = () =>
+  useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  )
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
-
-  // On attend le montage client avant de rendre le bouton
-  // pour eviter la hydration mismatch (serveur = "light", client = valeur localStorage)
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
+  const mounted = useIsMounted()
 
   if (!mounted) return <div className="w-14" />
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label="Changer le theme"
+      aria-label={theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre"}
       className="text-sm text-(--text-secondary) transition-colors hover:text-(--foreground)"
     >
       {theme === "dark" ? "☀️ Light" : "🌙 Dark"}

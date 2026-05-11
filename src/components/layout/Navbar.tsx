@@ -46,7 +46,9 @@ export default function Navbar() {
 
   const linkClass = (id: string) =>
     `transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-      activeSection === id ? "text-(--foreground)" : "text-(--text-secondary)"
+      activeSection === id
+        ? "text-(--accent)"
+        : "text-(--text-secondary) hover:text-(--foreground)"
     }`
 
   return (

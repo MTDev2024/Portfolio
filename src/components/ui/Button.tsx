@@ -16,9 +16,9 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-(--foreground) text-(--background) hover:opacity-90",
+      "bg-(--accent) text-white hover:opacity-90",
     secondary:
-      "border border-(--border) bg-transparent text-(--foreground) hover:bg-(--surface)",
+      "border border-(--border) bg-transparent text-(--foreground) hover:border-(--accent) hover:text-(--accent)",
   };
 
   const className = `${base} ${variants[variant]}`;

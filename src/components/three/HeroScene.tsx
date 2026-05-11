@@ -4,21 +4,60 @@ import { useRef, useMemo, useEffect, useState } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Float } from "@react-three/drei"
 import * as THREE from "three"
-
-// Surveille la classe "dark" sur <html> pour adapter les couleurs
-function useIsDark() {
-  const [isDark, setIsDark] = useState(false)
+/**
+ * Écoute la classe "dark" sur <html> via MutationObserver.
+ * Réagit à chaque changement de thème même si le toggle vient
+ * d'une autre instance de useTheme (state séparé).
+ */
+function useIsDark(): boolean {
+  const [isDark, setIsDark] = useState(
+    () =>
+      typeof document !== "undefined" &&
+      document.documentElement.classList.contains("dark"),
+  )
 
   useEffect(() => {
-    const html = document.documentElement
-    const update = () => setIsDark(html.classList.contains("dark"))
-    update()
-    const observer = new MutationObserver(update)
-    observer.observe(html, { attributes: true, attributeFilter: ["class"] })
+    // setState dans le callback (pas dans le corps de l'effet) → pas de warning ESLint
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"))
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
     return () => observer.disconnect()
   }, [])
 
   return isDark
+}
+
+/**
+ * Lit la valeur de --accent depuis le CSS au moment où le thème change.
+ * globals.css est la seule source de vérité pour cette couleur.
+ * getComputedStyle() retourne la valeur calculée par le navigateur,
+ * donc elle bascule automatiquement entre light (#7c3aed) et dark (#a78bfa).
+ */
+function useAccentColor(): string {
+  const [color, setColor] = useState("#7c3aed")
+
+  useEffect(() => {
+    const update = () => {
+      const value = getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent")
+        .trim()
+      if (value) setColor(value)
+    }
+    update()
+    // MutationObserver surveille l'ajout/suppression de la classe "dark" sur <html>
+    const observer = new MutationObserver(update)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+    return () => observer.disconnect()
+  }, [])
+
+  return color
 }
 
 // Respecte le réglage système "réduire les animations" (WCAG 2.1 SC 2.3.3)
@@ -27,7 +66,7 @@ function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(
     () =>
       typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
   )
 
   useEffect(() => {
@@ -40,14 +79,16 @@ function usePrefersReducedMotion() {
   return reduced
 }
 
+// Constantes de la grille déclarées au niveau du module (pas dans le composant)
+// → recréées une seule fois, jamais à chaque render
+const COLS = 36
+const ROWS = 20
+const COUNT = COLS * ROWS
+const SPACING = 0.45
+
 // Grille de sphères animées en vague
 function WaveGrid({ color, reduced }: { color: string; reduced: boolean }) {
   const mesh = useRef<THREE.InstancedMesh>(null)
-
-  const COLS = 36
-  const ROWS = 20
-  const COUNT = COLS * ROWS
-  const SPACING = 0.45
 
   // Objet fantoche pour calculer les matrices d'instance
   const dummy = useMemo(() => new THREE.Object3D(), [])
@@ -70,7 +111,7 @@ function WaveGrid({ color, reduced }: { color: string; reduced: boolean }) {
       mesh.current.setMatrixAt(i, dummy.matrix)
     }
     mesh.current.instanceMatrix.needsUpdate = true
-  }, [dummy, COUNT])
+  }, [dummy])
 
   // delta = temps écoulé depuis la dernière frame (en secondes), fourni par R3F
   useFrame((state, delta) => {
@@ -146,9 +187,10 @@ function FloatingWireframe({ color }: { color: string }) {
 export default function HeroScene() {
   const isDark = useIsDark()
   const reduced = usePrefersReducedMotion()
-
+  // wireColor lit --accent depuis globals.css — source de vérité unique
+  const wireColor = useAccentColor()
+  // dotColor réagit au thème via MutationObserver (même mécanisme que wireColor)
   const dotColor = isDark ? "#404040" : "#d4d4d4"
-  const wireColor = isDark ? "#4a4a4a" : "#cccccc"
 
   return (
     <Canvas
