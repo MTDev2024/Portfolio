@@ -1,7 +1,7 @@
 // Variable d'environnement à définir dans .env.local et dans Vercel
 // NEXT_PUBLIC_SITE_URL=https://mon-domaine.fr
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://michael-takbou.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://michael-takbou.fr"
 
 export const site = {
   url: siteUrl,
