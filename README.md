@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Michael Takbou
 
-## Getting Started
+Portfolio personnel de développeur frontend React & Next.js, déployé sur [michael-takbou.fr](https://michael-takbou.fr).
 
-First, run the development server:
+## Stack
+
+- **Framework** : Next.js 15 (App Router)
+- **Language** : TypeScript
+- **CSS** : Tailwind CSS v4
+- **Animations** : Framer Motion
+- **3D** : React Three Fiber + Drei (fond Hero)
+- **Formulaire** : react-hook-form + zod + Resend
+- **Déploiement** : Vercel
+
+## Lancer en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables d'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copier `.env.example` en `.env.local` et remplir les valeurs :
 
-## Learn More
+```bash
+cp .env.example .env.local
+```
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | URL du site (ex: `https://michael-takbou.fr`) |
+| `RESEND_API_KEY` | Clé API Resend pour le formulaire de contact |
+| `RESEND_FROM_EMAIL` | Email expéditeur (ex: `contact@michael-takbou.fr`) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/          # Pages et layout Next.js App Router
+├── components/
+│   ├── layout/   # Navbar, Footer
+│   ├── sections/ # Hero, About, Skills, Projects, Contact
+│   ├── three/    # Scène R3F (HeroScene)
+│   └── ui/       # Composants génériques
+├── config/       # site.ts — configuration globale
+├── data/         # projects.ts, skills.ts
+├── hooks/        # useTheme, useScrollSpy
+└── styles/       # globals.css — tokens CSS
+```
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev      # Serveur de développement
+npm run build    # Build production
+npm run lint     # ESLint
+npm run format   # Prettier
+```
