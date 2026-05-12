@@ -158,7 +158,7 @@ export default function Navbar() {
                     className="group flex items-baseline gap-5"
                   >
                     {/* Numéro éditorial — cohérent avec Skills et Projects */}
-                    <span className="text-xs tabular-nums text-(--accent) opacity-70">
+                    <span className="text-xs tabular-nums text-(--accent)">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="text-4xl font-semibold transition-colors group-hover:text-(--text-secondary)">

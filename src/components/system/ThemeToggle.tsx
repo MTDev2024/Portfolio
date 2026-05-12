@@ -24,7 +24,7 @@ export default function ThemeToggle() {
       aria-label={theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre"}
       className="text-sm text-(--text-secondary) transition-colors hover:text-(--foreground)"
     >
-      {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+      {theme === "dark" ? "☀️ Clair" : "🌙 Sombre"}
     </button>
   )
 }

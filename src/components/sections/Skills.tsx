@@ -52,7 +52,7 @@ export default function Skills() {
           >
             {/* Numéro + titre de catégorie */}
             <div className="flex items-baseline gap-3 sm:w-40 sm:shrink-0">
-              <span className="text-xs tabular-nums text-(--accent) opacity-70">
+              <span className="text-xs tabular-nums text-(--accent)">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="text-sm font-semibold">{category.title}</span>

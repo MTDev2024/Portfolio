@@ -97,7 +97,7 @@ export default function Projects() {
                 }`}
               >
                 <div className="flex items-start gap-4 px-2">
-                  <span className="mt-1 shrink-0 text-xs text-(--accent) tabular-nums opacity-70">
+                  <span className="mt-1 shrink-0 text-xs text-(--accent) tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
