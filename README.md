@@ -29,11 +29,11 @@ Copier `.env.example` en `.env.local` et remplir les valeurs :
 cp .env.example .env.local
 ```
 
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_SITE_URL` | URL du site (ex: `https://michael-takbou.fr`) |
-| `RESEND_API_KEY` | Clé API Resend pour le formulaire de contact |
-| `RESEND_FROM_EMAIL` | Email expéditeur (ex: `contact@michael-takbou.fr`) |
+| Variable               | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | URL du site (ex: `https://michael-takbou.fr`)      |
+| `RESEND_API_KEY`       | Clé API Resend pour le formulaire de contact       |
+| `RESEND_FROM_EMAIL`    | Email expéditeur (ex: `contact@michael-takbou.fr`) |
 
 ## Structure
 
