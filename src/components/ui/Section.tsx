@@ -18,7 +18,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`py-20 md:py-28 scroll-mt-24 ${className}`}
+      className={`py-14 md:py-28 scroll-mt-24 ${className}`}
     >
       <Container>
         <div
