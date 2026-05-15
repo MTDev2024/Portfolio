@@ -16,7 +16,7 @@ export default function Hero() {
     // Wrapper relatif : sert de containing block pour le canvas
     // Le canvas est ici et non dans Section pour éviter la contrainte max-w-6xl du Container
     <div className="relative overflow-hidden">
-      {/* Fade-in du canvas — delay pour laisser Three.js initialiser la scène */}
+      {/* Fade-in du canvas - delay pour laisser Three.js initialiser la scène */}
       <motion.div
         className="absolute inset-0"
         aria-hidden="true"
@@ -27,7 +27,7 @@ export default function Hero() {
         <HeroScene />
       </motion.div>
 
-      <Section id="hero" className="min-h-svh flex items-center">
+      <Section id="hero" className="flex min-h-svh items-center">
         {/* z-10 : passe au-dessus du canvas pour que les boutons restent cliquables */}
         <div className="relative z-10 w-full">
           <motion.div
@@ -41,17 +41,8 @@ export default function Hero() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              <Avatar variant="front" className="mb-8 h-28 w-28" />
+              <Avatar variant="front" className="mb-8 h-40 w-40" />
             </motion.div>
-
-            <motion.p
-              className="mb-4 text-sm uppercase tracking-[0.2em] text-(--text-secondary)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              Portfolio développeur frontend
-            </motion.p>
 
             <motion.h1
               className="max-w-3xl text-5xl font-semibold tracking-tight md:text-7xl"
