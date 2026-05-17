@@ -44,7 +44,7 @@ export default function Projects() {
 
       // Collecte tous les éléments focusables dans la modale
       const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), [href], input, [tabindex]:not([tabindex="-1"])',
+        'button:not([disabled]), [href], input, [tabindex]:not([tabindex="-1"])'
       )
       if (!focusable || focusable.length === 0) return
 
@@ -55,7 +55,7 @@ export default function Projects() {
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault()
         last.focus()
-      // Tab depuis le dernier → revient au 1er
+        // Tab depuis le dernier → revient au 1er
       } else if (!e.shiftKey && document.activeElement === last) {
         e.preventDefault()
         first.focus()
@@ -78,7 +78,7 @@ export default function Projects() {
       <h2 className="text-3xl font-semibold md:text-4xl">Projets</h2>
 
       <p className="mt-4 text-lg text-(--text-secondary)">
-        Quelques un des projets que j&aposai réalisés.
+        Quelques uns des projets que j&apos;ai réalisés.
       </p>
 
       <div className="mt-12 grid grid-cols-1 items-start gap-8 md:grid-cols-[1fr_1.2fr] md:gap-16">
@@ -188,7 +188,9 @@ export default function Projects() {
                               src={project.imageUrl}
                               alt={`Aperçu du projet ${project.title}`}
                               className="mt-4 md:hidden"
-                              onZoom={() => setZoomedImageUrl(project.imageUrl!)}
+                              onZoom={() =>
+                                setZoomedImageUrl(project.imageUrl!)
+                              }
                             />
                           )}
                         </motion.div>
@@ -333,7 +335,7 @@ function ZoomableImage({
       />
 
       {/* Loupe : visible sur mobile, hover sur desktop */}
-      <div className="absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
+      <div className="absolute right-2 bottom-2 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
         <svg
           width="14"
           height="14"
