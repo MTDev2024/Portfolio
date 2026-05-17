@@ -32,7 +32,7 @@ export default function Skills() {
       <h2 className="text-3xl font-semibold md:text-4xl">Compétences</h2>
 
       <p className="mt-4 text-lg text-(--text-secondary)">
-        Les technologies que j'utilise au quotidien.
+        Les technologies que j&apos;utilise au quotidien.
       </p>
 
       <motion.div

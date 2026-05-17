@@ -21,6 +21,8 @@ export const skills: SkillCategory[] = [
       { label: "HTML / CSS" },
       { label: "Tailwind CSS" },
       { label: "Framer Motion" },
+      { label: "React Three Fiber" },
+      { label: "Zod" },
     ],
   },
   {
