@@ -64,12 +64,11 @@ export const projects: Project[] = [
   },
   {
     id: "slider",
-    title: "animated_slider",
+    title: "Slider Animé",
     description: "Slider animé",
     tech: ["HTML", "CSS", "JavaScript"],
     imageUrl: "/images/projects/slider.jpg",
-    liveUrl: "https://starter-beaute.vercel.app/",
-    githubUrl: "https://github.com/MTDev2024/starter-beaute",
+    githubUrl: "https://github.com/MTDev2024/animated_slider",
   },
   {
     id: "beaute",
