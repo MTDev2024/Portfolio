@@ -11,7 +11,7 @@ export default function Avatar({
 }: AvatarProps) {
   // "front" → Hero (de face) | "three-quarter" → About (trois-quarts)
   const src =
-    variant === "front" ? "/avatar-front.svg" : "/avatar-three-quarter.svg"
+    variant === "front" ? "/avatar-front.jpg" : "/avatar-three-quarter.svg"
 
   return (
     <Image
