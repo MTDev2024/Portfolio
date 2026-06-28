@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112" fill="none">
+  <circle cx="56" cy="56" r="56" fill="#2E2E2E"/>
+  <text
+    x="56"
+    y="56"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="system-ui, sans-serif"
+    font-size="32"
+    font-weight="600"
+    fill="#F8F8F8"
+    letter-spacing="-1"
+  >MT</text>
+</svg>
